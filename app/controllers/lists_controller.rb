@@ -1,11 +1,12 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: %w[:show :destroy]
+  before_action :set_list, only: [:show, :destroy]
 
   def index
     @lists = List.all
   end
 
   def show
+    @movie = Movie.find(params[:id])
     @bookmark = Bookmark.new
     @review = Review.new(list: @list)
   end
